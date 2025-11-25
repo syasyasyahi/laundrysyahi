@@ -25,34 +25,39 @@ if (isset($_GET['delete'])) {
   <div class="row">
     <div class="col-sm-12">
       <div class="card">
-        <h3 class="card title">Data Level</h3>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="d-flex justify-content-end m-2">
-        <a href="?page=tambah-level" class="btn btn-primary">Add Level</a>
-      </div>
-      <table class="table table-bordered">
-        <tr>
-          <th>No</th>
-          <th>Level Name</th>
-          <th>Actions</th>
-        </tr>
-        <?php foreach ($rows as $key => $level): ?>
-          <tr>
-            <td><?Php echo $key + 1 ?></td>
-            <td><?Php echo $level['level_name'] ?></td>
-            <td><a href="?page=tambah-level&edit=<?php echo $level['id'] ?>" class="btn btn-success">Edit<i
-                  class="bi bi-pencil"></i></a>
-              <form class="d-inline" action="?page=level&delete=<?php echo $level['id'] ?>" method="post"
+        <div class="card-body">
+          <h3 class="card-title">Data Level</h3>
+            <div class="d-flex justify-content-end m-2">
+              <a href="?page=tambah-level" class="btn btn-primary">Add Level</a>
+            </div>
+            <table class="table table-bordered">
+              <tr>
+                <th>No</th>
+                <th>Level Name</th>
+                <th>Actions</th>
+              </tr>
+              <?php foreach ($rows as $key => $level): ?>
+                <tr>
+                  <td><?Php echo $key + 1 ?></td>
+                  <td><?Php echo $level['level_name'] ?></td>
+                  <td>
+                    <a href="?page=add-role-menu&edit=<?php echo $level['id'] ?>" class="btn btn-warning"><i
+                    class="bi bi-plus"></i>
+                  </a>
+                  <a href="?page=tambah-level&edit=<?php echo $level['id'] ?>" class="btn btn-success"><i
+                  class="bi bi-pencil"></i>
+                </a>
+                <form class="d-inline" action="?page=level&delete=<?php echo $level['id'] ?>" method="post"
                 onclick="return confirm('Are you sure you want to delete this level?')">
-                <button type="submit" class="btn btn-danger">Delete<i class="bi bi-trash"></i>
+                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i>
               </form>
             </td>
           </tr>
-        <?php endforeach; ?>
-      </table>
+          <?php endforeach; ?>
+        </table>
     </div>
+  </div>
+</div>
 </body>
 
 </html>

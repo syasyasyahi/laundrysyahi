@@ -5,6 +5,31 @@ include 'include/functions.php';
 include 'config/config.php';
 
 checklogin();
+
+// MIDDLEWARE
+
+// $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+// $level_id = $_SESSION['LEVEL_ID'] ?? '';
+
+// $query = mysqli_query($config, "SELECT * FROM menus JOIN level_menus ON level_menus.menu_id = menus.id WHERE level_id = '$level_id'");
+// $rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+// $allowed_role = false;
+
+// foreach ($rows as $row) {
+//     if($row['link'] == $currentPage) {
+//         $allowed_role = true;
+//         break;
+//     }
+// }
+
+// if(!$allowed_role) {
+//     echo"<h1>Access Failed</h1>";
+//     echo"You don't have access to the " . ucfirst($currentPage);
+//     echo "<a href='home.php?page=dashboard'> Back to Dashboard</a>";
+//     exit;
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +38,7 @@ checklogin();
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Wash Wizard Laundry</title>
+    <title>Syahi's Laundry</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -76,7 +101,7 @@ checklogin();
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>Wash Wizard Laundry</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Syahi's Laundry</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->

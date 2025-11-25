@@ -47,10 +47,13 @@ if (isset($_POST['update'])) {
   }
 
   $update = mysqli_query($config, "UPDATE services SET service_name='$service_name', service_price='$service_price', service_description='$service_description', service_photo='$filePath' WHERE id = $id");
-  if ($update) {
-    header("location:?page=service");
+  if (!$update) {
+    echo mysqli_error($config);
     exit;
   }
+
+  header("location:?page=service");
+  exit;
 }
 ?>
 

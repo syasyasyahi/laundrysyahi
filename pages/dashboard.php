@@ -15,7 +15,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">A Clean Laundry Like No Other</h5>
+                    <h5 class="card-title">About Us</h5>
                     <p>Teras Nusantara is an exquisite dining experience offering a wide variety of Indonesian dish
                     </p>
                 </div>

@@ -40,9 +40,11 @@ if (isset($_POST['update'])) {
           <h13 class="card-title"><?php echo isset($_GET['edit']) ? 'Update' : 'Tambah' ?> Level</h3>
             <div class="card-body">
               <form action="" method="post">
-                <label for="" class="form-label">level Name</label><br>
-                <input type="text" class="form-control w-50" name="level_name" value="<?php echo $level['level_name'] ?? '' ?>"
-                  required><br>
+                <div class="mb-3">
+                  <label for="" class="form-label">level Name</label><br>
+                  <input type="text" class="form-control w-50" name="level_name"
+                    value="<?php echo $level['level_name'] ?? '' ?>" required>
+                </div>
                 <button type="submit" class="btn btn-primary"
                   name="<?php echo isset($_GET['edit']) ? 'update' : 'simpan' ?>"><?php echo isset($id) ? 'Add' : 'Create' ?></button>
               </form>

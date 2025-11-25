@@ -31,7 +31,7 @@ if (isset($_GET['delete'])) {
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card title">Data Service</h3>
+                    <h3 class="card-title">Data Service</h3>
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-end p-2">
