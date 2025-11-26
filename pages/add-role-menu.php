@@ -49,7 +49,7 @@ if (isset($_POST['save'])) {
                         <form action="" method="post">
                             <div class="mb-3">
                                 <label for="" class="form-label">level Name</label><br>
-                                <input placeholder="Enter level name" type="text" class="form-control w-50"
+                                <input placeholder="Enter level name" type="text" name="level_name" class="form-control w-50"
                                     value="<?php echo $level['level_name'] ?? '' ?>" readonly>
 
                                 <input type="hidden" name="level_id" value="<?php echo $level['id'] ?? '' ?>">

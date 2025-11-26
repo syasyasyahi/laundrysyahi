@@ -12,27 +12,23 @@
 <section class="section">
     <div class="row">
         <div class="col-lg-6">
-
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">About Us</h5>
-                    <p>Teras Nusantara is an exquisite dining experience offering a wide variety of Indonesian dish
+                    <p>Syahi's Laundry
                     </p>
                 </div>
             </div>
-
         </div>
 
         <div class="col-lg-6">
-
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Local Stories and Ingridients</h5>
-                    <p>desc
+                    <h5 class="card-title">Clean clothes like no other services</h5>
+                    <p>Your clothes and linen will be clean
                     </p>
                 </div>
             </div>
-
         </div>
     </div>
 </section>

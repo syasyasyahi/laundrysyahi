@@ -28,7 +28,7 @@ if (isset($_GET['delete'])) {
         <div class="card-body">
           <h3 class="card-title">Data Level</h3>
             <div class="d-flex justify-content-end m-2">
-              <a href="?page=tambah-level" class="btn btn-primary">Add Level</a>
+              <a href="?page=tambah-level" class="btn btn-primary bi bi-plus-circle"> Add Level</a>
             </div>
             <table class="table table-bordered">
               <tr>

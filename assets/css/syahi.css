@@ -43,7 +43,7 @@ body {
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border-color: rgb(228, 73, 73);
+    border-color: rgb(67, 97, 230);
 }
 
 .category-btn {
@@ -55,11 +55,11 @@ body {
 .search-box{
     border-radius: 25px;
     padding: 10px 10px;
-    border: 2px solid #f13607;
+    border: 2px solid #3227cf;
 }
 
 .cart-header {
-    background-color:#f13607;
+    background-color:#3330d8d3;
     color: white;
     box-shadow: 0 0 3px gainsboro;
     border: 1px solid grey;
@@ -75,7 +75,7 @@ body {
 .cart-footer {
     background-color: white;
     padding: 20px;
-    border-top: 1px solid red;
+    border-top: 1px solid rgb(61, 17, 218);
 }
 
 .total-section {

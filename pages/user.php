@@ -38,7 +38,7 @@ if (isset($_GET['delete'])) {
               <th>Level</th>
               <th>Name</th>
               <th>Email</th>
-              <th></th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>

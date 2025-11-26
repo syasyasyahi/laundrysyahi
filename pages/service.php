@@ -35,7 +35,7 @@ if (isset($_GET['delete'])) {
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-end p-2">
-                        <a href="?page=tambah-service" class="btn btn-primary">Add</a>
+                        <a href="?page=tambah-service" class="btn btn-primary bi bi-plus-circle"> Add Service</a>
                     </div>
                     <table class="table table-bordered">
                         <tr>
@@ -43,7 +43,7 @@ if (isset($_GET['delete'])) {
                             <th>Service Name</th>
                             <th>Service Photo</th>
                             <th>Service Price</th>
-                            <th>Service Description</th>
+                            <th>Actions</th>
                         </tr>
                         <?php
                         foreach ($services as $key => $v) {
@@ -61,7 +61,7 @@ if (isset($_GET['delete'])) {
                                         <i class="bi bi-pencil"></i>
                                         Edit</a>
                                     <a href="?page=service&delete=<?php echo $v['id'] ?>" class="btn btn-warning btn-sm"
-                                        onclick="return confirm('ingin delete?')">
+                                        onclick="return confirm('Are you sure you want to delete this service?')">
                                         <i class="bi bi-trash"></i>
                                         Delete</a>
                                 </td>

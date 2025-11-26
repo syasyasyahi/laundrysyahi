@@ -29,7 +29,7 @@ if (isset($_GET['delete'])) {
         <h3 class="card-title">Data Customer</h3>
         <div class="mb-3" align="right">
           <a href="?page=tambah-customer" class="btn btn-primary">
-            <i class="bi bi-plus-circle"></i>Add Customer
+            <i class="bi bi-plus-circle"></i> Add Customer
           </a>
         </div>
         <table class="table table-bordered table-striped datatable">
@@ -39,7 +39,7 @@ if (isset($_GET['delete'])) {
               <th>Name</th>
               <th>Phone</th>
               <th>Address</th>
-              <th></th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>

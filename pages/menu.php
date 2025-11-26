@@ -26,10 +26,10 @@ if (isset($_GET['delete'])) {
 
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Data menu</h3>
+        <h3 class="card-title">Data Menu</h3>
         <div class="mb-3" align="right">
           <a href="?page=tambah-menu" class="btn btn-primary">
-            <i class="bi bi-plus-circle"></i>Add menu
+            <i class="bi bi-plus-circle"></i> Add Menu
           </a>
         </div>
         <table class="table table-bordered table-striped">
