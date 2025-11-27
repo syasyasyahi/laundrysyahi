@@ -11,7 +11,7 @@ $level_id = $level['id'];
 $queryMenus = mysqli_query($config, "SELECT * FROM menus ORDER BY id DESC");
 $rowMenus = mysqli_fetch_all($queryMenus, MYSQLI_ASSOC);
 
-$selectedMenu = mysqli_query($config, "SELECT * FROM level_menus WHERE '$level_id='");
+$selectedMenu = mysqli_query($config, "SELECT * FROM level_menus WHERE level_id=$id");
 $selectedMenuIds = [];
 $rowSelectedMenus = mysqli_fetch_all($selectedMenu, MYSQLI_ASSOC);
 foreach ($rowSelectedMenus as $selectedMenus) {

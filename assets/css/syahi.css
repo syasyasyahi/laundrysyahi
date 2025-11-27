@@ -59,10 +59,10 @@ body {
 }
 
 .cart-header {
-    background-color:#3330d8d3;
+    background-color:#8eaae4;
     color: white;
     box-shadow: 0 0 3px gainsboro;
-    border: 1px solid grey;
+    border: 1px solid #8eaae4;
     padding: 20px;
 }
 
@@ -75,7 +75,7 @@ body {
 .cart-footer {
     background-color: white;
     padding: 20px;
-    border-top: 1px solid rgb(61, 17, 218);
+    border-top: 1px solid #8eaae4;
 }
 
 .total-section {
@@ -85,8 +85,14 @@ body {
     margin-bottom: 15px;
 }
 
-.btn-chechkout {
+.btn-checkout {
     border: none;
+    padding: 15px;
+    font-size: 1,1rem;
+    font-weight: bold;
+}
+
+.btn-clear-cart {
     padding: 15px;
     font-size: 1,1rem;
     font-weight: bold;
