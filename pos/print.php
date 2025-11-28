@@ -2,13 +2,14 @@
 session_start();
 include '../config/config.php';
 // desc, max
-$query = mysqli_query($config, "SELECT * FROM trans_order_details ORDER BY id DESC");
+$id = $_GET['id'] ?? '';
+// $id = isset($_GET['id']) ? $_GET['id'] : '' ;
+
+$query = mysqli_query($config, "SELECT * FROM trans_orders WHERE id='$id' ORDER BY id DESC");
 $row = mysqli_fetch_assoc($query);
 
 $order_id = $row['id'];
-$queryDetails = mysqli_query($config, "SELECT service_name, od.* FROM order_details od 
-LEFT JOIN products p ON p.id = od.product_id
-WHERE order_id = '$order_id'");
+$queryDetails = mysqli_query($config, "SELECT s.service_name, od. * FROM trans_order_details od LEFT JOIN services s ON s.id = od.service_id WHERE order_id = '$order_id'");
 $rowDetails = mysqli_fetch_all($queryDetails, MYSQLI_ASSOC);
 
 ?>
@@ -18,7 +19,7 @@ $rowDetails = mysqli_fetch_all($queryDetails, MYSQLI_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Receipt</title>
+    <title>Syahis's Laundry Payment Receipt</title>
 
     <!-- Internal CSS: CSS code inside the html file -->
     <!-- external CSS: css code inside .css file and getting call after -->
@@ -140,9 +141,8 @@ $rowDetails = mysqli_fetch_all($queryDetails, MYSQLI_ASSOC);
     <div class="receipt-page">
 
         <div class="header">
-            <img src="../assets/uploads/logo.png" alt="Logo Teras Nusantara"
-                style="width: 100px; height:auto; margin-bottom:5px;">
-            <h2>Teras Nusantara</h2>
+            <img src="../assets/uploads/logosyahis.png" alt="Logo Syahi's Laundry" style="width: 150px; height:auto;">
+            <!-- <h2>Syahi's Laundry</h2> -->
             <p>Payment Receipt</p>
             <p>Jl. Karet Pasar Baru Barat, Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus
                 Ibukota Jakarta 10250</p>
@@ -153,8 +153,8 @@ $rowDetails = mysqli_fetch_all($queryDetails, MYSQLI_ASSOC);
             <div class="info-row">
                 <?php
                 // strtotime
-                $date = date("d-m-Y", strtotime($row['order_date']));
-                $time = date("H:i:s", strtotime($row['order_date']));
+                $date = date("d-m-Y", strtotime($row['created_at']));
+                $time = date("H:i:s", strtotime($row['created_at']));
                 ?>
                 <span><?php echo $date ?></span>
                 <span><?php echo $time ?></span>
@@ -172,41 +172,31 @@ $rowDetails = mysqli_fetch_all($queryDetails, MYSQLI_ASSOC);
         <div class="items">
             <?php foreach ($rowDetails as $item): ?>
                 <div class="item">
-                    <span class="item-name"><?php echo $item['product_name'] ?></span>
+                    <span class="item-name"><?php echo $item['service_name'] ?></span>
                     <span class="item-qty">x<?php echo $item['qty'] ?></span>
-                    <span class="item-price"><?php echo number_format($item['order_price']) ?></span>
+                    <span class="item-price"><?php echo number_format($item['price']) ?></span>
                 </div>
             <?php endforeach ?>
         </div>
         <div class="separator"></div>
-        <div class="totals">
-            <div class="total-row">
-                <span>Sub Total</span>
-                <span>Rp.40.000</span>
-            </div>
-            <div class="total-row">
-                <span>Ppn (Included)</span>
-                <span></span>
-            </div>
-        </div>
-        <div class="separator"></div>
         <div class="total-row grand">
-            <span>Total</span>
-            <span>Rp. <?php echo $row['order_amount'] ?></span>
+            <span>Total (Ppn Included)</span>
+            <span>Rp. <?php echo $row['order_total'] ?></span>
         </div>
-        <!-- <div class="payment">
+        <div class="payment">
             <div class="total-row">
                 <span>Cash</span>
-                <span>Rp. 50.000</span>
+                <span>Rp. <?php echo number_format($row['order_pay']) ?></span>
             </div>
             <div class="total-row">
                 <span>Change</span>
-                <span>Rp. 6.000</span>
+                <span>Rp. <?php echo number_format($row['order_change']) ?></span>
             </div>
-        </div> -->
+        </div>
         <div class="footer">
-            <p>Thank you for dining with us</p>
-            <p>Share your experience on google review to get a free dessert on your next visit</p>
+            <p>Thank you for washing with us</p>
+            <p>Share your experience with Syahi's Laundry on Google Review and enjoy a free 1kg wash and iron for your
+                next visit!</p>
             <p>Have a Wonderful Day Ahead! :D</p>
         </div>
     </div>
