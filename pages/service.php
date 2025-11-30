@@ -59,11 +59,11 @@ if (isset($_GET['delete'])) {
                                     <a href="?page=tambah-service&edit=<?php echo $v['id'] ?>"
                                         class="btn btn-success btn-sm">
                                         <i class="bi bi-pencil"></i>
-                                        Edit</a>
+                                        </a>
                                     <a href="?page=service&delete=<?php echo $v['id'] ?>" class="btn btn-warning btn-sm"
                                         onclick="return confirm('Are you sure you want to delete this service?')">
                                         <i class="bi bi-trash"></i>
-                                        Delete</a>
+                                        </a>
                                 </td>
                             </tr>
                         <?php } ?>

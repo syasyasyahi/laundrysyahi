@@ -8,27 +8,53 @@ checklogin();
 
 // MIDDLEWARE
 
-// $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
-// $level_id = $_SESSION['LEVEL_ID'] ?? '';
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+$level_id    = $_SESSION['LEVEL_ID'] ?? '';
 
-// $query = mysqli_query($config, "SELECT * FROM menus JOIN level_menus ON level_menus.menu_id = menus.id WHERE level_id = '$level_id'");
-// $rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
+$allowed_role = false;
 
-// $allowed_role = false;
+/**
+ * Halaman ekstra yang boleh diakses
+ * meskipun TIDAK ada di tabel menus
+ *
+ * key   = level_id
+ * value = array daftar page
+ */
+$extraAccess = [
+  
+  3 => ['report'], // 3 = Pimpinan
+  1 => ['add-role-menu', 'report', 'tambah-service', 'tambah-level', 'tambah-customer','tambah-menu', 'tambah-user','tax'], // 1 = Admin
 
-// foreach ($rows as $row) {
-//     if($row['link'] == $currentPage) {
-//         $allowed_role = true;
-//         break;
-//     }
-// }
+  // kalau mau admin juga punya akses khusus lain:
+  // 1 => ['add-role-menu', 'tambah-report'],
+];
 
-// if(!$allowed_role) {
-//     echo"<h1>Access Failed</h1>";
-//     echo"You don't have access to the " . ucfirst($currentPage);
-//     echo "<a href='home.php?page=dashboard'> Back to Dashboard</a>";
-//     exit;
-// }
+if (isset($extraAccess[$level_id]) && in_array($currentPage, $extraAccess[$level_id])) {
+    // kalau dia ada di daftar "akses ekstra", langsung lolos
+    $allowed_role = true;
+} else {
+    // selain itu, cek seperti biasa ke tabel menus + level_menus
+    $query = mysqli_query($config, "SELECT * FROM menus 
+    JOIN level_menus ON level_menus.menu_id = menus.id WHERE level_id = '$level_id' ");
+    $rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+    foreach ($rows as $row) {
+        if ($row['link'] == $currentPage) {
+            $allowed_role = true;
+            break;
+        }
+    }
+}
+
+
+if (!$allowed_role) {
+  echo "<h1 class='center'>Access Failed!!</h1>";
+  echo "You dont have permission to access this page " . ucfirst($currentPage);
+  echo "<br>";
+  echo "<br>";
+  echo "<a href='home.php?page=dashboard'>Back to Dashboard</a>";
+  exit;
+}
 
 ?>
 <!DOCTYPE html>
