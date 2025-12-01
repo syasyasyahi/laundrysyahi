@@ -30,7 +30,7 @@ if (isset($_GET['payment'])) {
     $customer_id = $data['customer_id'];
     $orderChange = $data['change'];
     $orderPay = $data['pay'];
-    $orderStatus = 1;
+    $orderStatus = 0; //0 = On Process
     $subtotal = $data['subtotal'];
 
     try {
@@ -146,7 +146,7 @@ $order_code = "ORD-" . date('dmY') . str_pad($nextId, 3, "0", STR_PAD_LEFT);
                                         <img src="../assets/uploads/<?php echo basename($service['service_photo']); ?>"
                                             alt="<?php echo $service['service_name']; ?>" width="200" class="img-fluid">
                                         <h6><?php echo $service['service_name'] ?></h6>
-                                        <small class="text-muted">Rp. <?php echo $service['service_price'] ?> / Kg </small>
+                                        <small class="text-muted">Rp. <?php echo number_format($service['service_price'], 0, ',', '.') ?> / Kg </small>
                                     </div>
                                 </div>
                             <?php endforeach ?>
@@ -165,7 +165,7 @@ $order_code = "ORD-" . date('dmY') . str_pad($nextId, 3, "0", STR_PAD_LEFT);
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Service</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>

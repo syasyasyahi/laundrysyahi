@@ -58,10 +58,26 @@ if (isset($_GET['delete'])) {
                                 <td><?php echo $v['order_tax'] ?></td>
                                 <td><?php echo $v['order_pay'] ?></td>
                                 <td><?php echo $v['order_change'] ?></td>
-                                <td><?php echo $v['order_status'] ?></td>
+                                <td class="text-center status-badge">
+                                    <?php
+                                    $isPaid = ($v['order_pay'] >= $v['order_total']);
+                                    if (!$isPaid) {
+                                        echo '<span class="badge text-bg-danger fs-6">Not Paid</span>';
+                                    } else {
+                                        if ($v['order_status'] == 0) {
+                                            echo '<span class="badge text-bg-warning fs-6">On Process</span>';
+                                        } else {
+                                            echo '<span class="badge text-bg-success fs-6">Ready for Pickup</span>';
+                                        }
+                                    }
+                                    ?>
+                                </td>
+
                                 <td>
-                                    <a href="pos/print.php?id=<?php echo $v['id'] ?>"
-                                        class="btn btn-success btn-sm">
+                                    <button class="btn btn-primary btn-sm" onclick="markReady(<?= $v['id'] ?>, this)">
+                                      <i class="bi bi-calendar-check" ></i> Mark Ready
+                                    </button>
+                                    <a href="pos/print.php?id=<?php echo $v['id'] ?>" class="btn btn-success btn-sm">
                                         <i class="bi bi-printer"></i>
                                         Print</a>
                                     <a href="?page=order&delete=<?php echo $v['id'] ?>" class="btn btn-warning btn-sm"
@@ -76,6 +92,35 @@ if (isset($_GET['delete'])) {
             </div>
         </div>
     </div>
+    <script>
+        function markReady(orderId, button) {
+            if (!confirm("Mark ready for pick up?")) return;
+
+            let formData = new FormData();
+            formData.append('id', orderId);
+
+            fetch('pos/mark-ready-ajax.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        // Ubah badge status langsung di halaman
+                        let statusCell = button.closest('tr').querySelector('.status-badge');
+                        statusCell.innerHTML = '<span class="badge text-bg-success fs-6">Ready for Pickup</span>';
+
+                        // Hilangkan tombol tandai siap
+                        button.remove();
+
+                        alert("Status updated!");
+                    } else {
+                        alert("Failed to update status.");
+                    }
+                });
+        }
+    </script>
+
 </body>
 
 </html>

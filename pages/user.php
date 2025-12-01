@@ -31,7 +31,7 @@ if (isset($_GET['delete'])) {
             <i class="bi bi-plus-circle"></i> Add User
           </a>
         </div>
-        <table class="table table-bordered table-striped datatable">
+        <table class="table table-bordered table-striped">
           <thead>
             <tr>
               <th>No</th>
