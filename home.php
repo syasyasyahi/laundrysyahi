@@ -9,7 +9,7 @@ checklogin();
 // MIDDLEWARE
 
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
-$level_id    = $_SESSION['LEVEL_ID'] ?? '';
+$level_id = $_SESSION['LEVEL_ID'] ?? '';
 
 $allowed_role = false;
 
@@ -21,13 +21,14 @@ $allowed_role = false;
  * value = array daftar page
  */
 $extraAccess = [
-  
-  3 => ['report'], // 3 = Pimpinan
-  2 => ['tambah-customer'], // 2 = Operator
-  1 => ['add-role-menu', 'report', 'tambah-service', 'tambah-level', 'tambah-customer','tambah-menu', 'tambah-user','tax', 'tambah-tax'], // 1 = Admin
 
-  // kalau mau admin juga punya akses khusus lain:
-  // 1 => ['add-role-menu', 'tambah-report'],
+    3 => ['report'], // 3 = Pimpinan
+    2 => ['tambah-customer'], // 2 = Operator
+    1 => ['add-role-menu', 'report', 'tambah-service', 'tambah-level', 'tambah-customer', 'tambah-menu', 'tambah-user', 'tax', 'tambah-tax'], // 1 = Admin
+
+
+    // kalau mau admin juga punya akses khusus lain:
+    // 1 => ['add-role-menu', 'tambah-report'],
 ];
 
 if (isset($extraAccess[$level_id]) && in_array($currentPage, $extraAccess[$level_id])) {
@@ -49,12 +50,12 @@ if (isset($extraAccess[$level_id]) && in_array($currentPage, $extraAccess[$level
 
 
 if (!$allowed_role) {
-  echo "<h1 class='center'>Access Failed!!</h1>";
-  echo "You dont have permission to access this page " . ucfirst($currentPage);
-  echo "<br>";
-  echo "<br>";
-  echo "<a href='home.php?page=dashboard'>Back to Dashboard</a>";
-  exit;
+    echo "<h1 class='center'>Access Failed!!</h1>";
+    echo "You dont have permission to access this page " . ucfirst($currentPage);
+    echo "<br>";
+    echo "<br>";
+    echo "<a href='home.php?page=dashboard'>Back to Dashboard</a>";
+    exit;
 }
 
 ?>
@@ -111,18 +112,18 @@ if (!$allowed_role) {
 
     <main id="main" class="main">
 
-    <?php
-    if (isset($_GET['page'])) {
-        if (file_exists('pages/' . $_GET['page'] . '.php')) {
-            include 'pages/' . $_GET['page'] . '.php';
+        <?php
+        if (isset($_GET['page'])) {
+            if (file_exists('pages/' . $_GET['page'] . '.php')) {
+                include 'pages/' . $_GET['page'] . '.php';
+            } else {
+                include 'pages/notfound.php';
+            }
         } else {
-            include 'pages/notfound.php';
+            include 'pages/dashboard.php';
         }
-    } else {
-        include 'pages/dashboard.php';
-    }
-    ?>
-    
+        ?>
+
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->

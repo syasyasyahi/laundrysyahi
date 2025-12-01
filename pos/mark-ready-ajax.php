@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 include dirname(__DIR__) . '/config/config.php';
 
-$id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
+$id = isset($_POST['id']) ? (int) $_POST['id'] : 0;
 
 if ($id <= 0) {
     echo json_encode(['success' => false, 'error' => 'Invalid id']);
@@ -21,3 +21,4 @@ if ($result) {
     $err = mysqli_error($config);
     echo json_encode(['success' => false, 'error' => $err, 'sql' => $sql]);
 }
+
