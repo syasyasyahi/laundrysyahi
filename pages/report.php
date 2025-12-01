@@ -1,5 +1,4 @@
 <?php
-// Pastikan path config sesuai dengan struktur foldermu
 include "config/config.php";
 
 $rows = [];
@@ -9,7 +8,6 @@ $total_subtotal = 0;
 $start_date = "";
 $end_date = "";
 
-// Cek apakah tombol filter diklik
 if (isset($_GET['filter'])) {
     $start_date = $_GET['start_date'];
     $end_date = $_GET['end_date'];
@@ -46,7 +44,7 @@ if (isset($_GET['filter'])) {
         $query = mysqli_query($config, $query_sql);
 
         if (!$query) {
-            // Debug-friendly error (hentikan eksekusi supaya tidak memunculkan HTML rusak)
+            // Debug-friendly error 
             die("Query Error: " . mysqli_error($config));
         }
 
@@ -59,7 +57,6 @@ if (isset($_GET['filter'])) {
             $total_subtotal += isset($r['order_subtotal']) ? (float) $r['order_subtotal'] : 0;
         }
     } else {
-        // jika tanggal tidak valid, jangan jalankan query — tetap rows kosong
         $rows = [];
     }
 }
